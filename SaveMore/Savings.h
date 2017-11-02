@@ -1,8 +1,17 @@
 #pragma once
-class Savings
+#include "Account.h"
+class Savings : public Account
 {
+private:
+	float Interest;
+	float CurrentBalance;
+
+
 public:
+	Savings(int Acct, float Balance);
 	Savings();
-	~Savings();
+	float Withdraw();
+	float Deposit();
+	void Display();
 };
 

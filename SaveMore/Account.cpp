@@ -4,9 +4,16 @@
 
 Account::Account()
 {
+	AcctNum=000;
+	OpenBalance=0;
+
 }
 
 
-Account::~Account()
+Account::Account(int Acct, float Balance)
+
 {
+	AcctNum = Acct;
+	OpenBalance = Balance;
+	
 }

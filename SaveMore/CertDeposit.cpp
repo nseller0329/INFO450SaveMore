@@ -3,32 +3,33 @@
 #include <iostream>
 
 
-CertDeposit::CertDeposit()
+CertDeposit::CertDeposit(int Acct, float Balance, int Term) : Account(Acct, Balance)
 {
+	TermLength = Term;
 }
 
 
-CertDeposit::~CertDeposit()
+CertDeposit::CertDeposit()
 {
+	
 }
 
 void CertDeposit::Display()
 {
+	cout << "||| Your Checking Account |||" << endl;
 	cout << "Account Number: " << AcctNum << endl;
 	cout << "Open Date: " << endl;
+	cout << "Term: " << TermLength << endl;
 	cout << "Beginning Balance: " << OpenBalance << endl;
-	cout << "Interest Accrued: " << endl;
-	cout << "Withdraw Amount: " << endl;
-	cout << "Desposit Amount: " << endl;
-	cout << "Current Balance: " << CurrentBalance << endl;
+	cout << "Current Balance: " << CurrentBalance << "\n" << "\n";
 }
- float CertDeposit::Deposit()
+ float CertDeposit::Deposit(float DepositAmt)
 {
-	 return 0;
+	 CurrentBalance += DepositAmt;
+	 return (CurrentBalance);
 }
 
-float CertDeposit::Withdraw()
+float CertDeposit::Withdraw(float WithdrawAmt)
 {
 	return 0;
 }
-

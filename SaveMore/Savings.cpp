@@ -4,13 +4,10 @@
 
 
 
-
 Savings:: Savings (int Acct, float Balance) : Account(Acct, Balance)
 {
+	
 	CurrentBalance = Balance;
-	CurrentBalance = Deposit();
-	CurrentBalance = Withdraw();
-	Interest = AssessInterest(CurrentBalance);
 	
 	
 }
@@ -28,16 +25,16 @@ void Savings::Display()
 	cout << "Account Number: " << AcctNum << endl;
 	cout << "Open Date: " << endl;
 	cout << "Beginning Balance: " << OpenBalance << endl;
-	cout << "Interest Accrued: " << Interest << endl;
-	cout << "Current Balance: " << CurrentBalance << endl;
+
+	cout << "Current Balance: " << CurrentBalance << "\n"<<"\n";
+	
 	 
 }
 
-float Savings :: AssessInterest (float CurrentBalance)
+void Savings :: AssessInterest ()
 {
 	float InterestRate;
 	float IRAccrual;
-	
 	if (CurrentBalance < 10000)
 	{
 		InterestRate = .010f;
@@ -48,29 +45,30 @@ float Savings :: AssessInterest (float CurrentBalance)
 	}
 
 	IRAccrual = CurrentBalance * (InterestRate / 12);
-
-	return(IRAccrual);
+	CurrentBalance = CurrentBalance + IRAccrual;
+	cout << "You've Accumulated: " << IRAccrual << " in interest." << "\n" << "\n";
+	
 }
 
 
 
-float Savings::Deposit()
+float Savings::Deposit(float DepositAmt)
 {
-	float DepositAmt = 0;
+	
 	CurrentBalance += DepositAmt;
 	return (CurrentBalance);
 	
 	
 }
 
-float Savings::Withdraw()
+float Savings::Withdraw(float WithdrawAmt)
 {
-	float WithdrawAmt = 100.50;
-	const float WithdrawFee = 2.00;
+		const float WithdrawFee = 2.00;
 	
 
 	if (CurrentBalance - WithdrawAmt < 0)
-	{	
+	{
+		cout << "Insufficient Funds." << "\n" << "\n";
 		return -1;
 	}
 	if (CurrentBalance -WithdrawAmt >= 0)

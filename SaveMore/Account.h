@@ -12,8 +12,8 @@ protected:
 public:
 	Account();
 	Account(int Acct, float Balance);
-	virtual float Withdraw()=0;
-	virtual float Deposit()=0;
+	virtual float Withdraw(float)=0;
+	virtual float Deposit(float)=0;
 	virtual void Display()= 0;
 	
 	

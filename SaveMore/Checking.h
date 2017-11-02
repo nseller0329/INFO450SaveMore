@@ -9,8 +9,8 @@ private:
 public:
 	Checking(int Acct, float Balance);
 	~Checking();
-	float Withdraw();
-	float Deposit();
+	float Withdraw(float);
+	float Deposit(float);
 	void Display();
 	float OrderChecks();
 };

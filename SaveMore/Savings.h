@@ -13,5 +13,6 @@ public:
 	float Withdraw();
 	float Deposit();
 	void Display();
+	float AssessInterest(float);
 };
 

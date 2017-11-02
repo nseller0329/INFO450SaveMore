@@ -2,7 +2,7 @@
 #include "Savings.h"
 #include <iostream>
 
-float AssessInterest(float CurrentBalance);
+
 
 
 Savings:: Savings (int Acct, float Balance) : Account(Acct, Balance)
@@ -33,7 +33,7 @@ void Savings::Display()
 	 
 }
 
-float AssessInterest (float CurrentBalance)
+float Savings :: AssessInterest (float CurrentBalance)
 {
 	float InterestRate;
 	float IRAccrual;

@@ -3,14 +3,15 @@
 class Checking : public Account
 {
 private: 
-	float Interest;
+	
 	float CurrentBalance;
 
 public:
-	Checking();
+	Checking(int Acct, float Balance);
 	~Checking();
 	float Withdraw();
 	float Deposit();
 	void Display();
+	float OrderChecks();
 };
 

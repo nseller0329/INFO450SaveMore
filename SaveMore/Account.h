@@ -6,6 +6,7 @@ class Account
 protected:
 	int AcctNum;
 	float OpenBalance;
+
 	
 
 

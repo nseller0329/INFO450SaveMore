@@ -8,6 +8,7 @@ Savings:: Savings (int Acct, float Balance) : Account(Acct, Balance)
 {
 	
 	CurrentBalance = Balance;
+	IRAccrual = 0;
 	
 	
 }
@@ -23,9 +24,9 @@ void Savings::Display()
 {
 	cout << "|||Your Savings Account|||" << endl;
 	cout << "Account Number: " << AcctNum << endl;
-	cout << "Open Date: " << endl;
+	cout << "Open Date: " << systime->tm_mon<<"//"<<systime->tm_mday<<"//"<<systime->tm_year << endl;
 	cout << "Beginning Balance: " << OpenBalance << endl;
-
+	cout << "You've Accumulated: " << IRAccrual << " in interest." << endl;
 	cout << "Current Balance: " << CurrentBalance << "\n"<<"\n";
 	
 	 
@@ -34,7 +35,7 @@ void Savings::Display()
 void Savings :: AssessInterest ()
 {
 	float InterestRate;
-	float IRAccrual;
+	
 	if (CurrentBalance < 10000)
 	{
 		InterestRate = .010f;
@@ -46,7 +47,7 @@ void Savings :: AssessInterest ()
 
 	IRAccrual = CurrentBalance * (InterestRate / 12);
 	CurrentBalance = CurrentBalance + IRAccrual;
-	cout << "You've Accumulated: " << IRAccrual << " in interest." << "\n" << "\n";
+	
 	
 }
 

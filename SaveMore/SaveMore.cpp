@@ -38,7 +38,17 @@ int main()
 	delete pChecking;
 	pCertDeposit = new CertDeposit(6,50000,6);
 	pCertDeposit->Display();
-
+	delete pCertDeposit;
+	pCertDeposit = new CertDeposit(7,50000,2);
+	pCertDeposit->Display();
+	pCertDeposit->AgeTerm();
+	pCertDeposit->Display();
+	delete pCertDeposit;
+	pCertDeposit = new CertDeposit(8, 10000,-1);
+	pCertDeposit->Withdraw(100);
+	pCertDeposit->Display();
+	delete pCertDeposit;
+	
 	return 0;
 }
 

@@ -3,14 +3,21 @@
 class CertDeposit : public Account
 {
 private:
-	int TermLength;
 	float CurrentBalance;
+	float InterestRate;
+	float IRAccrual;
+
+protected:
+	int TermLength;
 
 public:
-	CertDeposit(int Acct, float Balance, int term) { term = TermLength; }
+	CertDeposit(int Acct, float Balance, int term);
 	CertDeposit();
 	float Withdraw(float);
 	float Deposit(float);
 	void Display();
+	float SetInterest();
+	void AgeTerm();
+	void AssessInterest();
 };
 

@@ -8,6 +8,7 @@ class Savings : public Account
 private:
 	float Interest;
 	float CurrentBalance;
+	float IRAccrual;
 	
 public:
 	

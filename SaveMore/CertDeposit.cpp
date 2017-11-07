@@ -3,27 +3,27 @@
 #include <iostream>
 
 
-CertDeposit::CertDeposit(int Acct, float Balance, int Term) : Account(Acct, Balance)
-{
-	if (Term > 5)
+CertDeposit::CertDeposit(float Balance, int Term) : Account(Balance) //upon creation balance is derived from account , term is unique to cert deposit class
+{  //check the inputted term length for various conditions
+	if (Term > 5) 
 	{
 		TermLength = 5;
-		cout << "Invalid Term Length, Your Term will be set to 5 years." << endl;
+		cout << "Invalid Term Length, Your Term will be set to 5 years." << endl; // if the term length is longer than 5 it will be defaulted to 5
 	}
 
 	if (Term < 0)
 	{
 		TermLength = 0;
-		cout << "Invalid Term Length, Your Term will be set to 0." << endl;
+		cout << "Invalid Term Length, Your Term will be set to 0." << endl; // if the term length is less than 0 it will be defaulted to 0
 	}
-	if (Term <= 5 && Term > 0)
+	if (Term <= 5 && Term > 0) //if the term length is 5 or less and greater than 0 it will not be altered
 	{
 		TermLength = Term;
 	}
 
 	CurrentBalance = Balance;
-	InterestRate = SetInterest();
-	
+	InterestRate = AssessInterest();
+	IRAccrual = 0;
 }
 
 
@@ -36,13 +36,14 @@ void CertDeposit::Display()
 {
 	cout << "||| Your Certificate Deposit Account |||" << endl;
 	cout << "Account Number: " << AcctNum << endl;
-	cout << "Open Date: " << endl;
+	cout << "This Account Was Opened On: " << OpeningDate << endl;
 	cout << "Term: " << TermLength << endl;
 	cout << "Beginning Balance: " << OpenBalance << endl;
 	cout << "Your interest rate is: " << InterestRate << endl;
+	cout << "You have accrued " << IRAccrual << "in interest." << endl;
 	cout << "Current Balance: " << CurrentBalance << "\n" << "\n";
 }
-float CertDeposit::SetInterest()
+float CertDeposit::AssessInterest()
 {
 	if (TermLength == 5)
 	{
@@ -54,6 +55,9 @@ float CertDeposit::SetInterest()
 		InterestRate = .05f;
 		return InterestRate;
 	}
+
+	IRAccrual = CurrentBalance * (InterestRate / 12);
+	CurrentBalance = CurrentBalance + IRAccrual;
 	return 0;
 }
 
@@ -74,13 +78,13 @@ float CertDeposit::Withdraw(float WithdrawAmt)
 	}
 	if (CurrentBalance - WithdrawAmt < 0)
 	{
-		cout << "Insufficient Funds." << "\n" << "\n";
+		cout << "Insufficient Funds. \n\n" << endl;
 		return -1;
 	}
 	return 0;
 }
 
-void CertDeposit::AgeTerm()
+void CertDeposit::AgeTerm() //ages the term to test the conditions 
 {
 	if (TermLength > 0)
 	{
@@ -90,21 +94,4 @@ void CertDeposit::AgeTerm()
 	{
 		return;
 	}
-}
-
-void CertDeposit::AssessInterest()
-{
-	float InterestRate;
-
-	if (CurrentBalance < 10000)
-	{
-		InterestRate = .010f;
-	}
-	if (CurrentBalance >= 10000)
-	{
-		InterestRate = .020f;
-	}
-
-	IRAccrual = CurrentBalance * (InterestRate / 12);
-	CurrentBalance = CurrentBalance + IRAccrual;
 }

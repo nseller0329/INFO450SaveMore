@@ -12,7 +12,7 @@ private:
 	
 public:
 	
-	Savings(int Acct, float Balance);
+	Savings(float Balance);
 	Savings();
 	float Withdraw(float);
 	float Deposit(float);

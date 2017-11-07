@@ -1,10 +1,11 @@
 #include "stdafx.h"
 #include "Savings.h"
 #include <iostream>
+#include <time.h>
+#include <stdio.h>
 
 
-
-Savings:: Savings (int Acct, float Balance) : Account(Acct, Balance)
+Savings:: Savings (float Balance) : Account(Balance)
 {
 	
 	CurrentBalance = Balance;
@@ -24,7 +25,7 @@ void Savings::Display()
 {
 	cout << "|||Your Savings Account|||" << endl;
 	cout << "Account Number: " << AcctNum << endl;
-	cout << "Open Date: " << systime->tm_mon<<"//"<<systime->tm_mday<<"//"<<systime->tm_year << endl;
+	cout <<"This Account Was Opened On: "<< OpeningDate;
 	cout << "Beginning Balance: " << OpenBalance << endl;
 	cout << "You've Accumulated: " << IRAccrual << " in interest." << endl;
 	cout << "Current Balance: " << CurrentBalance << "\n"<<"\n";
@@ -32,7 +33,7 @@ void Savings::Display()
 	 
 }
 
-void Savings :: AssessInterest ()
+void Savings :: AssessInterest () //sets interest rate and then assesses the accrual 
 {
 	float InterestRate;
 	

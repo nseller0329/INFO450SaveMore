@@ -1,25 +1,32 @@
 #include "stdafx.h"
 #include "Account.h"
-#include <ctime>
+#include <time.h>
+#include <stdio.h>
 
 
-
-
-
-Account::Account()
+Account::Account()  
 {
-	AcctNum=000;
-	OpenBalance=0;
-
+	OpenBalance=0; //default value
 	
-
 }
 
+int Account :: counter;
 
-Account::Account(int Acct, float Balance)
+Account::Account(float Balance) : AcctNum(++counter) //++counter generates a unique ID by incrementing with each instance
 
 {
-	AcctNum = Acct;
-	OpenBalance = Balance;
+	getTime(); //gets the time when Acct instance is created
+	OpenBalance = Balance; //sets the OpenBalance to the inputed balance upon creation
 	
+}
+
+void Account::getTime()
+{
+	time_t now;
+	time(&now); //get time
+	localtime_s(&OpenDate, &now); //convert time
+	strftime(OpeningDate, sizeof OpeningDate,"%D", &OpenDate); //convert time to string with formatting
+
+
+
 }

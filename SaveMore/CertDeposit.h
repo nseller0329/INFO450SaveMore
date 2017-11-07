@@ -17,6 +17,7 @@ public:
 	float Deposit(float);
 	void Display(); //copy of display function
 	void AgeTerm(); //ages the term length FOR TESTING ONLY
-	float AssessInterest(); //determines monthly accrual
+	float SetInterest(); //sets interest rate
+	void AssessInterest(); //determines monthly accrual
 };
 

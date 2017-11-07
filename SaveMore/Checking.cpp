@@ -50,17 +50,20 @@ float Checking::Withdraw(float WithdrawAmt) // a low balance fee is attached if 
 {
 	
 	const float LowBalFee = 5.00;
+	
+	if (CurrentBalance - WithdrawAmt < 0) // balance is not allowed to go negative
+	{
+		cout << "Insufficient Funds. \n\n" << endl;
+		return -1;
+	}
+	
 	if (CurrentBalance < 500 && CurrentBalance >= 0)
 	{
 		CurrentBalance = CurrentBalance - LowBalFee - WithdrawAmt;
 		return (CurrentBalance);
 	}
 
-	if (CurrentBalance < 0) // balance is not allowed to go negative
-	{
-		cout << "Insufficient Funds. \n\n" << endl;
-		return -1;
-	}
+
 	if (CurrentBalance >= 500) //balances $500 or above have no fees associated
 	{
 		CurrentBalance = CurrentBalance - WithdrawAmt;

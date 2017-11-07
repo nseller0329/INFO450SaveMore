@@ -6,7 +6,7 @@ class Savings : public Account
 	
 
 private:
-	float Interest;
+	float InterestRate;
 	float CurrentBalance;
 	float IRAccrual;
 	
@@ -17,6 +17,7 @@ public:
 	float Withdraw(float);
 	float Deposit(float);
 	void Display();
+	float SetInterest();
 	void AssessInterest();
 };
 
